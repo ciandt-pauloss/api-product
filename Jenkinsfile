@@ -1,10 +1,11 @@
 pipeline {
-    agent {
-        docker { image 'node:lts-alpine' }
-    }
+    agent any
 
     stages {
         stage ('Test') {
+            agent {
+                docker { image 'node:lts-alpine' }
+            }
             steps {
                 sh 'node --version'
                 sh 'echo Install Dependecies'
@@ -14,8 +15,13 @@ pipeline {
         }
 
         stage ('Build Image') {
+            // steps {
+            //     sh "docker build -t pauloss/api-product:${env.BUILD_ID} ."
+            // }
             steps {
-                sh "docker build -t pauloss/api-product:${env.BUILD_ID} ."
+                script {
+                    dockerapp = docker.build("pauloss/api-product:${env.BUILD_ID}")
+                }
             }
         }
     }
