@@ -1,9 +1,7 @@
-const express = require('express');
-const app = express();
+const { app } = require('./server');
+
 const port = 3000;
 
-app.get('/', (_, res) => res.send('Server OK!'));
-
 app.listen(port, () => {
-    console.log(`Server runing on port: ${port}!`);
+    console.log(`Server runing on port: ${port}`);
 });

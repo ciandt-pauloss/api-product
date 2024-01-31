@@ -7,6 +7,9 @@ pipeline {
         stage ('Test') {
             steps {
                 sh 'node --version'
+                sh 'echo Install Dependecies'
+                sh 'yarn'
+                sh 'yarn test'
             }
         }
 
