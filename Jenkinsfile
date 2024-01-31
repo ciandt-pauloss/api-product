@@ -16,9 +16,6 @@ pipeline {
         stage ('Build Image') {
             steps {
                 sh 'docker build -t pauloss/api-product:${env.BUILD_ID} .'
-                script {
-                    dockerapp = docker.build("pauloss/api-product", "-f ./Dockerfile ./")
-                }
             }
         }
     }
