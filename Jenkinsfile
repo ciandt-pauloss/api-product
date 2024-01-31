@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage ('Initial') {
+        stage ('Build Image') {
             steps {
-                echo 'Pipeline initialize'
+                script {
+                    dockerapp = docker.build("pauloss/api-product", "-f ./Dockerfile ./")
+                }
             }
         }
     }
