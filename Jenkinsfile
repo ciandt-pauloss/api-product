@@ -10,6 +10,7 @@ pipeline {
                 nodejs(nodeJSInstallationName: 'node21.6.1') {
                     sh 'node --version'
                     sh 'echo Install Dependecies'
+                    sh 'npm install -g yarn'
                     sh 'yarn'
                     sh 'yarn test'
                 }
