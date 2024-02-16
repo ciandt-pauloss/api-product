@@ -8,11 +8,20 @@ pipeline {
             // }
             steps {
                 nodejs(nodeJSInstallationName: 'node21.6.1') {
-                    sh 'node --version'
-                    sh 'echo Install Dependecies'
-                    sh 'npm install -g yarn'
                     sh 'yarn'
                     sh 'yarn test'
+                }
+            }
+        }
+
+        stage ('Quality Gate') {
+            environment {
+                SCANNER_HOME = tool 'SonarQubeScanner';    
+            }
+
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh "${SCANNER_HOME}/bin/sonar-scanner"
                 }
             }
         }
