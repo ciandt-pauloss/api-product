@@ -3,9 +3,6 @@ pipeline {
 
     stages {
         stage ('Test') {
-            // agent {
-            //     docker { image 'node:lts-alpine' }
-            // }
             steps {
                 nodejs(nodeJSInstallationName: 'node21.6.1') {
                     sh 'yarn'
@@ -23,6 +20,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh "${SCANNER_HOME}/bin/sonar-scanner"
                 }
+                waitForQualityGate abortPipeline: true
             }
         }
 
