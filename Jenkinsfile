@@ -9,7 +9,7 @@ pipeline {
             steps {
                 nodejs(nodeJSInstallationName: 'node21.6.1') {
                     sh 'yarn'
-                    sh 'yarn test'
+                    sh 'yarn test --coverage'
                 }
             }
         }
