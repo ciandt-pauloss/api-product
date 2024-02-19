@@ -2,6 +2,7 @@
 @Library('nodejs-ci-library') _
 
 installDependencies {
+    nodeLabel = 'any'
     nodeJsVersion = 'node21.6.1'
 }
 
