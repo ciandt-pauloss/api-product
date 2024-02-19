@@ -3,7 +3,7 @@
 
 installDependencies {
     nodeLabel = 'any'
-    nodeJsVersion = 'node21.6.1'
+    nodejsVersion = 'node21.6.1'
 }
 
 pipeline {
