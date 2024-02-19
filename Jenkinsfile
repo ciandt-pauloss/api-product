@@ -1,5 +1,5 @@
 #!groovy
-@Library('node-library') _
+@Library('nodejs-ci-library') _
 
 pipeline {
     agent any
