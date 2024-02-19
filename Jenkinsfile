@@ -1,6 +1,10 @@
 #!groovy
 @Library('nodejs-ci-library') _
 
+installDependencies {
+    nodeJsVersion = 'node21.6.1'
+}
+
 pipeline {
     agent any
 
@@ -13,10 +17,7 @@ pipeline {
         //         }
         //     }
         // }
-        installDependencies {
-            nodeJsVersion = 'node21.6.1'
-        }
-
+        
         stage ('Quality Gate') {
             environment {
                 SCANNER_HOME = tool 'SonarQubeScanner';    
