@@ -1,14 +1,20 @@
+#!groovy
+@Library('node-library') _
+
 pipeline {
     agent any
 
     stages {
-        stage ('Test') {
-            steps {
-                nodejs(nodeJSInstallationName: 'node21.6.1') {
-                    sh 'yarn'
-                    sh 'yarn test --coverage'
-                }
-            }
+        // stage ('Test') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'node21.6.1') {
+        //             sh 'yarn'
+        //             sh 'yarn test --coverage'
+        //         }
+        //     }
+        // }
+        installDependencies {
+            nodeJsVersion = 'node21.6.1'
         }
 
         stage ('Quality Gate') {
