@@ -3,7 +3,7 @@
 
 pipelineNodejs {
     nodejsVersion = 'node21.6.1'
-    imageName = "pauloss/api-product:${env.BUILD_ID}"
+    imageName = "pauloss/api-product"
 }
 
 // pipeline {
